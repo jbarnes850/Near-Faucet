@@ -1,0 +1,6 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location (if you add one in the future)
+# Sitemap: https://near-intents-faucet.vercel.app/sitemap.xml 
