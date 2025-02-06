@@ -45,3 +45,5 @@ The following environment variables are required:
 ## Deployment
 
 The application is automatically deployed to Vercel when changes are pushed to the main branch.
+
+Production URL: https://near-faucet-kappa.vercel.app

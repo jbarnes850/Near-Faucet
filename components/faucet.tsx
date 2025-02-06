@@ -9,6 +9,7 @@ import { Info } from "lucide-react"
 import { isValidNearAddress, sanitizeAddress } from "@/utils/validation"
 import { ClaimHistory } from "./claim-history"
 import { requestTokens } from "@/app/actions"
+import { CopyButton } from "@/components/ui/copy-button"
 import Image from "next/image"
 
 export function Faucet() {
@@ -111,16 +112,21 @@ export function Faucet() {
               status.type === "error" ? "border-near-red/20 bg-near-red/10" : "border-near-green/20 bg-near-green/10"
             }
           >
-            <AlertDescription className={status.type === "error" ? "text-near-red" : "text-near-green"}>
+            <AlertDescription className={status.type === "error" ? "text-near-red" : "text-near-green font-medium"}>
               {status.message}
               {status.linkdropUrl && (
                 <div className="mt-2">
-                  <Input
-                    value={status.linkdropUrl}
-                    readOnly
-                    className="font-mono text-xs md:text-sm bg-white border-near-black/10"
-                  />
-                  <p className="text-sm mt-2 text-near-black/60 font-medium">
+                  <div className="relative">
+                    <Input
+                      value={status.linkdropUrl}
+                      readOnly
+                      className="font-mono text-xs md:text-sm bg-white border-near-black/10 pr-10 text-near-green"
+                    />
+                    <div className="absolute right-1 top-1/2 -translate-y-1/2">
+                      <CopyButton value={status.linkdropUrl} />
+                    </div>
+                  </div>
+                  <p className="text-sm mt-2 text-near-black/70 font-medium">
                     Click the link above to claim your tokens. Make sure to save it!
                   </p>
                 </div>
