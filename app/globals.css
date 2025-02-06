@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "FK Grotesk";
+    src: url("/fonts/FKGrotesk-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "FK Grotesk";
+    src: url("/fonts/FKGrotesk-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "FK Grotesk";
+    src: url("/fonts/FKGrotesk-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 60 3% 94%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 158 100% 46%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 240 100% 80%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 60 3% 94%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 187 81% 47%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 3 100% 70%;
+    --destructive-foreground: 0 0% 0%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 158 100% 46%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-near-offwhite text-near-black font-grotesk;
+  }
+}
+
