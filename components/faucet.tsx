@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Info } from "lucide-react"
+import { Info, ExternalLink } from "lucide-react"
 import { isValidNearAddress, sanitizeAddress } from "@/utils/validation"
 import { ClaimHistory } from "./claim-history"
 import { requestTokens } from "@/app/actions"
@@ -70,19 +70,37 @@ export function Faucet() {
               className="w-6 h-6"
             />
           </div>
-          <h2 className="text-xl md:text-2xl font-semibold">Claim NEAR Tokens</h2>
+          <h2 className="text-xl md:text-2xl font-semibold">Claim Mainnet NEAR</h2>
         </div>
         <p className="text-near-black/60 text-sm md:text-base font-medium">
-          Receive 10 NEAR tokens via Keypom linkdrop for development and testing
+          Receive 1 NEAR token via Keypom linkdrop for your mainnet wallet
         </p>
       </CardHeader>
       <CardContent className="space-y-6">
         <Alert className="border-near-green/20 bg-near-green/10">
           <Info className="h-4 w-4 text-near-green flex-shrink-0" />
-          <AlertTitle className="text-near-black font-medium">About Keypom Linkdrops</AlertTitle>
+          <AlertTitle className="text-near-black font-medium">About Mainnet Keypom Linkdrops</AlertTitle>
           <AlertDescription className="text-near-black/70 text-sm">
-            Each claim provides a unique Keypom link that will allow you to receive 10 NEAR tokens. You can claim these
-            tokens by creating a new wallet or connecting an existing one.
+            Each mainnet wallet (.near) can claim one Keypom link to receive 1 NEAR token. New wallets with zero balance
+            are welcome to claim! The tokens will be sent directly to your mainnet wallet.
+            <div className="mt-2 flex flex-col gap-1">
+              <a 
+                href="https://app.mynearwallet.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-near-black hover:text-near-black/80"
+              >
+                Create or access your wallet on MyNearWallet <ExternalLink className="ml-1 h-3 w-3" />
+              </a>
+              <a 
+                href="https://nearblocks.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-near-black hover:text-near-black/80"
+              >
+                View your wallet on NearBlocks <ExternalLink className="ml-1 h-3 w-3" />
+              </a>
+            </div>
           </AlertDescription>
         </Alert>
 
@@ -90,7 +108,7 @@ export function Faucet() {
           <div className="space-y-2">
             <Input
               type="text"
-              placeholder="Enter your NEAR wallet address (e.g. example.near)"
+              placeholder="Enter your mainnet wallet address (e.g. example.near)"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               className="w-full border-near-black/10 focus:border-near-green focus:ring-near-green text-sm md:text-base"
@@ -101,7 +119,7 @@ export function Faucet() {
             className="w-full bg-near-black hover:bg-near-black/90 text-white font-medium text-sm md:text-base"
             disabled={isLoading}
           >
-            {isLoading ? "Processing..." : "Request Tokens"}
+            {isLoading ? "Verifying..." : "Request NEAR"}
           </Button>
         </form>
 
@@ -138,9 +156,12 @@ export function Faucet() {
         <div className="border-t border-near-black/10 pt-4">
           <h3 className="font-medium mb-2 text-near-black text-sm md:text-base">Important Notes:</h3>
           <ul className="text-xs md:text-sm space-y-1 text-near-black/60">
-            <li>• Limited to one claim per wallet address every 24 hours</li>
-            <li>• Tokens are for testing and development purposes only</li>
+            <li>• Only mainnet wallets (.near) are eligible</li>
+            <li>• New wallets (zero balance) are welcome!</li>
+            <li>• Limited to one claim per wallet address</li>
+            <li>• Tokens will be sent to your mainnet wallet</li>
             <li>• Make sure to save your Keypom link after claiming</li>
+            <li>• Check your wallet status on <a href="https://nearblocks.io" target="_blank" rel="noopener noreferrer" className="text-near-black hover:text-near-black/80">NearBlocks</a></li>
           </ul>
         </div>
 

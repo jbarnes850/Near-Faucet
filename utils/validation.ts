@@ -1,7 +1,8 @@
+const MAINNET_ACCOUNT_REGEX = /^((?![\_.])(?!.*[\_.]{2})[a-z0-9\_.]{2,64})\.near$/
+
 export function isValidNearAddress(address: string): boolean {
-  // NEAR accounts can be 2-64 characters and contain lowercase letters, digits, and special characters
-  const nearAddressRegex = /^(([a-z\d]+[-_])*[a-z\d]+\.)*([a-z\d]+[-_])*[a-z\d]+$/
-  return address.length >= 2 && address.length <= 64 && nearAddressRegex.test(address)
+  if (!address) return false
+  return MAINNET_ACCOUNT_REGEX.test(address)
 }
 
 export function sanitizeAddress(address: string): string {
